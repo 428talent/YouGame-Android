@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:id="@+id/game_list_item_cover"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sea_of_memories_header" />
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sea of memories"
+            android:id="@+id/game_list_item_game_name"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ivanovich Games"
+            android:id="@+id/game_list_item_game_meta"
+            android:textColor="#000"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="128.99"
+        android:id="@+id/game_list_item_price"
+        android:textAlignment="textEnd"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    app:statusBarBackground="#00000000"
+    tools:context=".account.AccountActivity">
+
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:theme="@style/AppTheme.AppBarOverlay">-->
+
+    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="300dp"-->
+    <!--app:contentScrim="?attr/colorPrimary"-->
+    <!--app:expandedTitleGravity="top"-->
+    <!--app:expandedTitleMarginStart="50dp"-->
+    <!--app:expandedTitleMarginTop="150dp"-->
+    <!--app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="175dp"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:src="@drawable/user_avatar"-->
+    <!--app:layout_collapseMode="parallax"-->
+    <!--app:layout_collapseParallaxMultiplier="0.5" />-->
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+    <!--android:layout_width="64dp"-->
+    <!--android:src="@drawable/user_avatar"-->
+    <!--app:civ_border_color="#FFF"-->
+    <!--app:civ_border_width="2dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="145dp"-->
+    <!--android:id="@+id/account_avatar"-->
+    <!--android:layout_height="64dp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:textSize="24sp"-->
+    <!--android:text="Aren Takayama"-->
+    <!--android:textColor="#FFF"-->
+    <!--android:layout_below="@id/account_avatar"-->
+    <!--android:layout_height="wrap_content" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/account_toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="55dp"-->
+    <!--app:title=""-->
+    <!--app:layout_collapseMode="pin" />-->
+
+    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+    <!--<com.flyco.tablayout.SlidingTabLayout-->
+    <!--android:id="@+id/account_tab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="55dp"-->
+    <!--android:background="#333333"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--app:tl_tab_space_equal="true"-->
+    <!--app:tl_textsize="18sp"-->
+    <!--tl:tl_indicator_color="#FFFFFF"-->
+    <!--tl:tl_textSelectColor="#FFFFFF"-->
+    <!--tl:tl_textUnselectColor="#A1A1A1"-->
+    <!--tl:tl_underline_color="#FFFFFF"-->
+    <!--tl:tl_underline_height="1dp"/>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/account_vp"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--android:nestedScrollingEnabled="true"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#333"
+        android:fitsSystemWindows="true"
+        android:foregroundTint="#FFF"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#333333"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:statusBarScrim="#20111111"
+            app:titleEnabled="false">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+
+
+                <ImageView
+                    android:id="@+id/account_avatar_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#FFF"
+                    android:foreground="#33FFFFFF"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user_avatar" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/account_iv_avatar"
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:src="@drawable/user_avatar"
+                        app:civ_border_color="#FFF"
+                        app:civ_border_width="2dp"
+                        app:civ_fill_color="#fff" />
+
+                    <TextView
+                        android:id="@+id/account_tv_nickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:text="Aren Takayama"
+                        android:textAlignment="center"
+                        android:textColor="#FFF"
+                        android:textSize="23sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/account_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleMarginTop="15dp" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/account_tab"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#333333"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:tl_tab_space_equal="true"
+            app:tl_textsize="18sp"
+            tl:tl_indicator_color="#FFFFFF"
+            tl:tl_textSelectColor="#FFFFFF"
+            tl:tl_textUnselectColor="#A1A1A1"
+            tl:tl_underline_color="#FFFFFF"
+            tl:tl_underline_height="1dp" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/account_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_addButtonColorPressed="@color/colorAccent"
+        app:fab_colorDisabled="@color/colorAccent"
+        app:fab_colorNormal="@color/colorAccent"
+        app:fab_expandDirection="up"
+        app:fab_labelStyle="@style/menu_labels_style"
+        app:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_account_add_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/colorAccent"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_icon="@drawable/ic_add_friend_light"
+            app:fab_colorPressed="@color/colorAccent"
+            app:fab_size="mini"
+            app:fab_title="添加好友" />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_account_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/colorAccent"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_icon="@drawable/ic_comment_light"
+            app:fab_colorPressed="@color/colorAccent"
+            app:fab_size="mini"
+            app:fab_title="关注" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="3dp"
+    android:elevation="3dp"
+    android:layout_height="300dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/ubisoft_sale"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="3dp"
+            android:layout_height="match_parent" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/round_overlayout"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius_bottom_left="3dp"
+            android:layout_alignParentBottom="true"
+            app:riv_corner_radius_bottom_right="3dp"
+            android:layout_height="100dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Ubisoft特惠周"
+                android:textSize="18sp"
+                android:textColor="#FFF"
+                android:id="@+id/sale_name"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="还剩4天"
+                android:layout_below="@id/sale_name"
+                android:textColor="#FFF"
+                android:textSize="12sp"
+                android:id="@+id/sale_time"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="查看更多"
+                android:textColor="#FFF"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

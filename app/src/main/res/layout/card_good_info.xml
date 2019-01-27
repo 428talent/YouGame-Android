@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="3dp"
+    android:layout_marginEnd="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开发商:"
+                android:textColor="#2a2a2a" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:text="FromSoftware, Inc."
+                android:textColor="#2a2a2a" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发行商:"
+                android:textColor="#2a2a2a" />
+
+            <TextView
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:layout_marginStart="16dp"
+                android:maxLines="4"
+                android:text="FromSoftware, Inc., BANDAI NAMCO Entertainment"
+                android:textColor="#2a2a2a" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发行日:"
+                android:textColor="#2a2a2a" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="2018年6月9日"
+                android:textColor="#2a2a2a" />
+
+        </GridLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

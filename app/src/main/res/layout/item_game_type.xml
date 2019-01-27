@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginStart="8dp"
+    android:id="@+id/game_type_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/type_icon"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_fps_color" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="射击"
+            android:id="@+id/type_name"
+            android:textAlignment="center"
+            android:textColor="#2a2a2a" />
+
+</LinearLayout>

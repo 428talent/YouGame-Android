@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/sela_list_title"
+            android:layout_width="wrap_content"
+            android:text="本周热门"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/sale_game_list_rv"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:nestedScrollingEnabled="false"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

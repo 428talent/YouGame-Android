@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_shopping_cart"
+            android:icon="@drawable/ic_shopping_cart_dark"
+            android:title="购物车" />
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@drawable/ic_wishlist_dark"
+            android:title="愿望单" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/ic_friends_dark"
+            android:title="好友" />
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_wallet_dark"
+            android:title="钱包" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_dark"
+            android:title="帮助" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about_dark"
+            android:title="关于" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_dark"
+            android:title="设置" />
+
+    </group>
+
+
+</menu>
