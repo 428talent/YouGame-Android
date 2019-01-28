@@ -2,10 +2,7 @@ package com.yougame.takayamaaren.yougame.sdk
 
 import com.yougame.takayamaaren.yougame.sdk.model.request.RegisterUserRequestBody
 import com.yougame.takayamaaren.yougame.sdk.model.request.UserLoginRequestBody
-import com.yougame.takayamaaren.yougame.sdk.model.response.AuthResponseBody
-import com.yougame.takayamaaren.yougame.sdk.model.response.Container
-import com.yougame.takayamaaren.yougame.sdk.model.response.Profile
-import com.yougame.takayamaaren.yougame.sdk.model.response.User
+import com.yougame.takayamaaren.yougame.sdk.model.response.*
 import kotlinx.coroutines.Deferred
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
@@ -28,4 +25,27 @@ interface ApiInterface {
     fun getProfileList(
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Profile>>
+
+    @GET("/api/carts")
+    fun getCartList(
+            @Header("Authorization") token: String,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<CartItem>>
+
+    @GET("/api/goods")
+    fun getGoodList(
+            @Query("id") ids: List<Int>?,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<Good>>
+
+    @GET("/api/games")
+    fun getGameList(
+            @Query("id") ids: List<Int>?,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<Game>>
+
+    @GET("/api/game/{id}/band")
+    fun getGameBand(
+            @Path("id") gameId: Int
+    ): Deferred<GameBand>
 }

@@ -74,6 +74,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             UserManager.user?.let {
                 this.setUsername("@${it.username}")
             }
+            header.setAvatarClickListener {
+                UserManager.user?.let {
+                    startActivity<AccountActivity>()
+                } ?: let {
+                    startActivity<LoginActivity>()
+                }
+            }
         }
 
 

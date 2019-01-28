@@ -2,6 +2,7 @@ package com.yougame.takayamaaren.yougame.ui.shoppingcart
 
 import android.graphics.Color
 import android.view.View
+import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.yougame.takayamaaren.yougame.R
@@ -10,7 +11,7 @@ import org.jetbrains.anko.sdk27.coroutines.onCheckedChange
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-class ShoppingCartAdapter(val datas: MutableList<ShoppingCartItem>) : BaseQuickAdapter<ShoppingCartItem, ShoppingCartViewHolder>(R.layout.card_shopping_cart, datas) {
+class ShoppingCartAdapter(datas: MutableList<ShoppingCartItem>) : BaseQuickAdapter<ShoppingCartItem, ShoppingCartViewHolder>(R.layout.card_shopping_cart, datas) {
     var onItemSelectChange: ((item: ShoppingCartItem, isSelect: Boolean) -> Unit)? = null
     private val selectedOverlayColor = Color.parseColor("#347cff")
     private val notSelectOverlayColor = Color.parseColor("#2a2a2a")
@@ -52,6 +53,11 @@ class ShoppingCartAdapter(val datas: MutableList<ShoppingCartItem>) : BaseQuickA
             item.isSelected = it
             refreshCardState()
         }
+        with(helper.itemView) {
+            Glide.with(this).load(item.coverUrl).into(this.iv_cover)
+            this.tv_name.text = item.name
+            this.tv_price.text = "￥${item.price}"
+        }
 
         refreshCardState()
 
@@ -60,7 +66,7 @@ class ShoppingCartAdapter(val datas: MutableList<ShoppingCartItem>) : BaseQuickA
 
 }
 
-class ShoppingCartItem(val itemId: Int) {
+class ShoppingCartItem(val itemId: Int, val name: String, val coverUrl: String, val price: String) {
     var isActiveSelectMode = false
     var isSelected = false
     var onStartSelectMode: (() -> Unit)? = null

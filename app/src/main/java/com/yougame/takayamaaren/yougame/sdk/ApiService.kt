@@ -15,6 +15,7 @@ class ApiService {
         private const val apiDevelopment = "http://192.168.31.107:8888/"
         private const val baseUrl = AppConfig.ApiServerUrl
         private val gson = GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create()
         val api: ApiInterface by lazy { createClient() }
         private fun createClient(): ApiInterface {
