@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:statusBarBackground="@color/colorPrimaryDark"
     android:fitsSystemWindows="true"
-    tools:context=".payment.PaymentActivity">
+    tools:context=".ui.payment.PaymentActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

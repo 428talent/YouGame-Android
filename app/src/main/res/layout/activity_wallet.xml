@@ -6,7 +6,7 @@
     app:statusBarBackground="@color/colorPrimaryDark"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    tools:context=".wallet.WalletActivity">
+    tools:context=".ui.wallet.WalletActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"

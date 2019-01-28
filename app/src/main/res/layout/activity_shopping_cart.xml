@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     app:statusBarBackground="@color/colorPrimaryDark"
     android:layout_height="match_parent"
-    tools:context=".shoppingcart.ShoppingCartActivity">
+    tools:context=".ui.shoppingcart.ShoppingCartActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

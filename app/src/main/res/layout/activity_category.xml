@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     app:statusBarBackground="@color/colorPrimaryDark"
-    tools:context=".category.CategoryActivity">
+    tools:context=".ui.category.CategoryActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
