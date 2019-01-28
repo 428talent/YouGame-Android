@@ -5,10 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.EditText
 import com.mobsandgeeks.saripaar.ValidationError
 import com.mobsandgeeks.saripaar.Validator
-import com.mobsandgeeks.saripaar.annotation.Max
-import com.mobsandgeeks.saripaar.annotation.Min
-import com.mobsandgeeks.saripaar.annotation.NotEmpty
-import com.mobsandgeeks.saripaar.annotation.Password
+import com.mobsandgeeks.saripaar.annotation.*
 import com.yougame.takayamaaren.yougame.R
 import com.yougame.takayamaaren.yougame.extension.showError
 import com.yougame.takayamaaren.yougame.ui.register.RegisterActivity
@@ -26,12 +23,11 @@ class LoginActivity : AppCompatActivity(), LoginView, Validator.ValidationListen
 
 
     @NotEmpty(message = "用户名不能为空")
-    @Password(min = 6, scheme = Password.Scheme.ALPHA_NUMERIC, message = "密码格式错误")
+    @Password(min = 6, scheme = Password.Scheme.ANY, message = "密码格式错误")
     private lateinit var passwordEditText: EditText
 
     @NotEmpty(message = "用户名不能为空")
-    @Max(value = 16, message = "用户名最大16个字符")
-    @Min(value = 6, message = "用户名至少6位")
+    @Length(max = 16, min = 6, message = "用户名最大16个字符,至少6个")
     private lateinit var usernameEditText: EditText
 
     private lateinit var validator: Validator

@@ -23,8 +23,10 @@ import com.yougame.takayamaaren.yougame.ui.settings.SettingsActivity
 import com.yougame.takayamaaren.yougame.ui.shoppingcart.ShoppingCartActivity
 import com.yougame.takayamaaren.yougame.ui.wallet.WalletActivity
 import com.yougame.takayamaaren.yougame.ui.wishlist.WishlistActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.main_nav_header.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
@@ -35,13 +37,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val feedFragment by lazy { FeedFragment() }
     private val developDialog by lazy {
         AlertDialog.Builder(this)
-                .setItems(arrayOf("登陆", "注册"), { dialog, which ->
+                .setItems(arrayOf("登陆", "注册")) { dialog, which ->
                     when (which) {
                         0 -> {
                             startActivity<LoginActivity>()
                         }
                     }
-                }).setTitle("开发者")
+                }.setTitle("开发者")
                 .create()
     }
 
@@ -57,20 +59,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             developDialog.show()
         }
         main_toggle_drawer.onClick {
-
             drawer.openDrawer(Gravity.START)
 
-
         }
-        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
-        navigationView.setNavigationItemSelectedListener(this)
+
+        nav_view.setNavigationItemSelectedListener(this)
 
         main_tab.setViewPager(main_pager, arrayOf("热门", "排行", "动态"), this, arrayListOf(hotFragment, rankingFragment, feedFragment))
-        with(navigationView.getHeaderView(0), {
-            nav_header_avatar.onClick {
-                startActivity<AccountActivity>()
+        with(nav_view.getHeaderView(0).header) {
+
+            UserManager.profile?.let {
+                this.setAvatar(it.avatar)
             }
-        })
+            UserManager.user?.let {
+                this.setUsername("@${it.username}")
+            }
+        }
 
 
     }

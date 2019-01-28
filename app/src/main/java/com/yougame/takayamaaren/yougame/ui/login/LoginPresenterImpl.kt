@@ -1,5 +1,6 @@
 package com.yougame.takayamaaren.yougame.ui.login
 
+import com.yougame.takayamaaren.yougame.manager.user.Profile
 import com.yougame.takayamaaren.yougame.manager.user.UserManager
 import com.yougame.takayamaaren.yougame.sdk.ApiError
 import com.yougame.takayamaaren.yougame.services.UserServices
@@ -23,7 +24,12 @@ class LoginPresenterImpl : LoginPresenter {
         GlobalScope.launch {
             try {
                 val response = UserServices.login(username, password)
-                UserManager.onLogin(response, username)
+                val profileList = UserServices.getUserProfile(1, 1, "user" to response.payload.userId.toString())
+                if (profileList.count == 0) {
+                    view.showSnackBar("获取用户资料失败")
+                }
+                UserManager.onLogin(response, username, Profile(profileList.result.first()))
+
             } catch (e: ApiError) {
                 e.printStackTrace()
                 view.showSnackBar(e.detail)

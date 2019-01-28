@@ -2,6 +2,7 @@ package com.yougame.takayamaaren.yougame.sdk
 
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.yougame.takayamaaren.yougame.utils.AppConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -12,7 +13,7 @@ class ApiService {
     companion object {
         private const val apiServerUrl = "http://119.23.208.32:8000/"
         private const val apiDevelopment = "http://192.168.31.107:8888/"
-        private const val baseUrl = apiDevelopment
+        private const val baseUrl = AppConfig.ApiServerUrl
         private val gson = GsonBuilder()
                 .create()
         val api: ApiInterface by lazy { createClient() }
