@@ -3,9 +3,11 @@ package com.yougame.takayamaaren.yougame.ui.shoppingcart
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import com.yougame.takayamaaren.yougame.R
+import com.yougame.takayamaaren.yougame.ui.good.GoodActivity
 
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
 import kotlinx.android.synthetic.main.content_shopping_cart.*
+import org.jetbrains.anko.startActivity
 
 class ShoppingCartActivity : AppCompatActivity(), CartView {
 
@@ -50,6 +52,10 @@ class ShoppingCartActivity : AppCompatActivity(), CartView {
             }
             toolbar.startActionMode(actionCallback)
             true
+        }
+        adapter.setOnItemClickListener { adapter, view, position ->
+            val data = adapter.data[position] as ShoppingCartItem
+            GoodActivity.launch(this, data.gameId)
         }
         adapter.onItemSelectChange = { itemId, isSelect ->
             takeIf { isSelect }?.let { selectedList.add(itemId) }

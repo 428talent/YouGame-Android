@@ -66,7 +66,7 @@ class ShoppingCartAdapter(datas: MutableList<ShoppingCartItem>) : BaseQuickAdapt
 
 }
 
-class ShoppingCartItem(val itemId: Int, val name: String, val coverUrl: String, val price: String) {
+class ShoppingCartItem(val itemId: Int, val name: String, val coverUrl: String, val price: String,val gameId : Int) {
     var isActiveSelectMode = false
     var isSelected = false
     var onStartSelectMode: (() -> Unit)? = null

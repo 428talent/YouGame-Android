@@ -44,7 +44,7 @@
             android:label="@string/title_activity_wishlist"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.good.commonts.CommentsActivity"
+            android:name="com.yougame.takayamaaren.yougame.ui.good.comments.CommentsActivity"
             android:label="@string/title_activity_comments"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -1,4 +1,4 @@
-package com.yougame.takayamaaren.yougame.ui.good.commonts
+package com.yougame.takayamaaren.yougame.ui.good.comments
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar

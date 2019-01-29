@@ -1,6 +1,6 @@
 package com.yougame.takayamaaren.yougame.ui.register
 
-import com.yougame.takayamaaren.yougame.services.UserServices
+import com.yougame.takayamaaren.yougame.services.user.UserServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

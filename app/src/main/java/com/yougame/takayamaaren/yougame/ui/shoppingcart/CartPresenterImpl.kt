@@ -36,7 +36,8 @@ class CartPresenterImpl : CartPresenter {
                             price = goodListResponse.result.first { good -> good.id == item.goodId }.price.toString(),
                             coverUrl = goodListResponse.result.first { good -> good.id == item.goodId }.gameId.let {
                                 "${AppConfig.ApiServerUrl}${gameBands[it]!!.path}"
-                            }
+                            },
+                            gameId = goodListResponse.result.first { good -> good.id == item.goodId }.gameId
 
                     )
                 })

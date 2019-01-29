@@ -3,11 +3,9 @@ package com.yougame.takayamaaren.yougame.ui.login
 import com.yougame.takayamaaren.yougame.manager.user.Profile
 import com.yougame.takayamaaren.yougame.manager.user.UserManager
 import com.yougame.takayamaaren.yougame.sdk.ApiError
-import com.yougame.takayamaaren.yougame.services.UserServices
-import com.yougame.takayamaaren.yougame.ui.base.View
-import kotlinx.coroutines.CoroutineScope
+import com.yougame.takayamaaren.yougame.services.user.ProfileQueryBuilder
+import com.yougame.takayamaaren.yougame.services.user.UserServices
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class LoginPresenterImpl : LoginPresenter {
@@ -24,7 +22,7 @@ class LoginPresenterImpl : LoginPresenter {
         GlobalScope.launch {
             try {
                 val response = UserServices.login(username, password)
-                val profileList = UserServices.getUserProfile(1, 1, "user" to response.payload.userId.toString())
+                val profileList = ProfileQueryBuilder().inUser(response.payload.userId).inPage(1, 1).query()
                 if (profileList.count == 0) {
                     view.showSnackBar("获取用户资料失败")
                 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/user_avatar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aren Takayama"
+            android:textColor="#2a2a2a"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4.5"
+            android:textColor="#2a2a2a"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The game's great. Very hard, very good, very fascinating, even though the first boss will crush you to oblivion if you haven't played DS 1 or 2 and there's TOO GODDAMN MANY POISON SWAMPS AND CATHEDRALS, I MEAN COME ON WHY ARE THERE SO MANY"
+            android:textColor="#2a2a2a"
+            android:textSize="14sp" />
+
+        <com.robertlevonyan.views.chip.Chip
+            android:id="@+id/cp_good_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:mcv_chipText="Default">
+
+        </com.robertlevonyan.views.chip.Chip>
+    </LinearLayout>
+</LinearLayout>

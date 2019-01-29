@@ -23,11 +23,14 @@ interface ApiInterface {
 
     @GET("/api/profile")
     fun getProfileList(
+            @Query("id") ids: List<Int>?,
+            @Query("user") userIds: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Profile>>
 
     @GET("/api/carts")
     fun getCartList(
+
             @Header("Authorization") token: String,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<CartItem>>
@@ -35,6 +38,7 @@ interface ApiInterface {
     @GET("/api/goods")
     fun getGoodList(
             @Query("id") ids: List<Int>?,
+            @Query("game") gameIds: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Good>>
 
@@ -44,8 +48,20 @@ interface ApiInterface {
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Game>>
 
+    @GET("/api/game/{id}")
+    fun getGame(
+            @Path("id") id: Int
+    ): Deferred<Game>
+
     @GET("/api/game/{id}/band")
     fun getGameBand(
             @Path("id") gameId: Int
     ): Deferred<GameBand>
+
+    @GET("/api/comments")
+    fun getCommentList(
+            @Query("id") ids: List<Int>?,
+            @Query("game") gameIds: List<Int>?,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<Comment>>
 }
