@@ -95,6 +95,16 @@ class GoodActivity : AppCompatActivity(), GameView {
 
     override fun onGoodsLoad(good: List<GoodItem>) {
         panel_goods.updateGoods(good)
+        panel_goods.onAddToCart = {
+            presenter.addToCart(it)
+        }
+    }
+
+    override fun onAddCartComplete(goodIds: List<Int>) {
+        panel_goods.goods.forEach { item -> if (goodIds.any { it == item.good.id }) item.inCart }
+        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+        panel_goods.refreshGoods()
+        panel_goods.clearSelect()
     }
 
     override fun onBackPressed() {

@@ -5,14 +5,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
-
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="40dp">
     <com.robertlevonyan.views.chip.Chip
         android:id="@+id/chip"
         android:layout_width="wrap_content"
         app:mcv_selectable="true"
+
         android:layout_height="wrap_content"
         app:mcv_chipText="Default" />
+    </RelativeLayout>
 
 </LinearLayout>

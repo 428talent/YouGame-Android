@@ -1,5 +1,6 @@
 package com.yougame.takayamaaren.yougame.sdk
 
+import com.yougame.takayamaaren.yougame.sdk.model.request.AddCartRequestBody
 import com.yougame.takayamaaren.yougame.sdk.model.request.RegisterUserRequestBody
 import com.yougame.takayamaaren.yougame.sdk.model.request.UserLoginRequestBody
 import com.yougame.takayamaaren.yougame.sdk.model.response.*
@@ -40,6 +41,12 @@ interface ApiInterface {
             @Header("Authorization") token: String,
             @Path("id") id: Int
     ): Deferred<Common>
+
+    @POST("/api/carts")
+    fun addToCart(
+            @Header("Authorization") token: String,
+            @Body body: AddCartRequestBody
+    ): Deferred<CartItem>
 
     @GET("/api/goods")
     fun getGoodList(

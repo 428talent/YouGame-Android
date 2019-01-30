@@ -1,8 +1,10 @@
 package com.yougame.takayamaaren.yougame.ui.good
 
+import com.yougame.takayamaaren.yougame.sdk.model.response.CartItem
 import com.yougame.takayamaaren.yougame.sdk.model.response.Good
 import com.yougame.takayamaaren.yougame.sdk.model.response.InventoryItem
 import com.yougame.takayamaaren.yougame.services.cart.CartQueryBuilder
+import com.yougame.takayamaaren.yougame.services.cart.CartServices
 import com.yougame.takayamaaren.yougame.services.comment.CommentQueryBuilder
 import com.yougame.takayamaaren.yougame.services.game.GameServices
 import com.yougame.takayamaaren.yougame.services.good.GoodQueryBuilder
@@ -22,6 +24,7 @@ interface GamePresenter : Presenter<GameView> {
     fun loadGame(gameId: Int)
     fun loadGoods(gameId: Int)
     fun loadComments(gameId: Int)
+    fun addToCart(goodIds: List<Int>)
 }
 
 class GamePresenterImpl : GamePresenter {
@@ -78,6 +81,19 @@ class GamePresenterImpl : GamePresenter {
                                     ?: ""
                     )
                 })
+            }
+        }
+    }
+
+    override fun addToCart(goodIds: List<Int>) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val task = mutableMapOf<Int, CartItem>()
+            goodIds.forEach { goodId ->
+                task[goodId] = CartServices.addToCart(goodId)
+            }
+
+            launch(Dispatchers.Main) {
+                view.onAddCartComplete(task.map { it.value.goodId })
             }
         }
     }

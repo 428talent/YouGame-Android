@@ -10,5 +10,6 @@ interface GameView : View {
     fun onGameLoad(game: Game)
     fun onGameCoverLoad(url: String)
     fun onGoodsLoad(good: List<GoodItem>)
-    fun onCommentLoad(comment : List<CommentItem>)
+    fun onCommentLoad(comment: List<CommentItem>)
+    fun onAddCartComplete(goodIds: List<Int>)
 }

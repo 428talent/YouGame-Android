@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.panel_good_slide.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class SelectGoodPanel(context: Context, attributeSet: AttributeSet) : LinearLayout(context, attributeSet) {
-    var goods = mutableListOf<Good>()
+    var goods = mutableListOf<GoodItem>()
     private val selectedGoodIds = mutableListOf<Int>()
     var onAddToCart: ((goodIds: List<Int>) -> Unit)? = null
     var totalPrice = 0.0
@@ -21,8 +21,16 @@ class SelectGoodPanel(context: Context, attributeSet: AttributeSet) : LinearLayo
     }
 
     fun updateGoods(goods: List<GoodItem>) {
-        this.goods = goods.map { item -> item.good }.toMutableList()
-        adapter.setNewData(goods)
+        this.goods = goods.toMutableList()
+        refreshGoods()
+    }
+
+    fun refreshGoods() {
+        adapter.setNewData(this.goods)
+    }
+    fun clearSelect(){
+        selectedGoodIds.clear()
+        updateTotalPrice()
     }
 
     fun setTitleVisitable(visitable: Boolean) {
@@ -44,7 +52,7 @@ class SelectGoodPanel(context: Context, attributeSet: AttributeSet) : LinearLayo
     }
 
     private fun updateTotalPrice() {
-        totalPrice = goods.filter { good: Good -> selectedGoodIds.any { id -> id == good.id } }.sumByDouble { good -> good.price }
+        totalPrice = goods.filter { item -> selectedGoodIds.any { id -> id == item.good.id } }.sumByDouble { it.good.price }
         tv_total_price.text = "¥$totalPrice"
     }
 
