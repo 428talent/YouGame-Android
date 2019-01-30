@@ -5,8 +5,8 @@ import com.yougame.takayamaaren.yougame.sdk.model.response.GameBand
 import com.yougame.takayamaaren.yougame.ui.clients.ApiClient
 
 object GameServices {
-    suspend fun fetchGameBand(gameId: Int): GameBand {
-        return ApiClient.client.getGameBand(gameId).await()
+    suspend fun fetchGameBand(gameId: Int, imageType: String? = "desktop"): GameBand {
+        return ApiClient.client.getGameBand(gameId, imageType).await()
     }
 
     suspend fun getGame(gameId: Int): Game {

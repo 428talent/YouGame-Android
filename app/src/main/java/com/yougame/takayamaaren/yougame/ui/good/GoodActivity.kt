@@ -10,6 +10,7 @@ import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import com.yougame.takayamaaren.yougame.R
+import com.yougame.takayamaaren.yougame.sdk.model.response.Game
 import com.yougame.takayamaaren.yougame.sdk.model.response.Good
 import com.yougame.takayamaaren.yougame.ui.good.comments.CommentsActivity
 import com.yougame.takayamaaren.yougame.ui.good.components.comment.CommentItem
@@ -49,6 +50,7 @@ class GoodActivity : AppCompatActivity(), GameView {
 
             override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState) {
                 fab_menu.visibility = if (newState == SlidingUpPanelLayout.PanelState.EXPANDED || newState == SlidingUpPanelLayout.PanelState.DRAGGING) View.GONE else View.VISIBLE
+                panel_goods.setTitleVisitable(!(newState == SlidingUpPanelLayout.PanelState.EXPANDED || newState == SlidingUpPanelLayout.PanelState.DRAGGING))
             }
         })
 
@@ -66,10 +68,10 @@ class GoodActivity : AppCompatActivity(), GameView {
         Glide.with(this).load(url).into(cover)
     }
 
-    override fun onGameLoad(game: com.yougame.takayamaaren.yougame.sdk.model.response.Game) {
+    override fun onGameLoad(game: Game) {
         bar_game_name.text = game.name
 
-
+        price.text = "¥${game.price}"
         card_info_game_description.text = game.intro
         app_bar_layout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             GlobalScope.launch(Dispatchers.Main) {

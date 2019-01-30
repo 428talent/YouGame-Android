@@ -55,7 +55,8 @@ interface ApiInterface {
 
     @GET("/api/game/{id}/band")
     fun getGameBand(
-            @Path("id") gameId: Int
+            @Path("id") gameId: Int,
+            @Query("type") imageType: String?
     ): Deferred<GameBand>
 
     @GET("/api/comments")
