@@ -2,6 +2,7 @@ package com.yougame.takayamaaren.yougame.ui.shoppingcart
 
 import com.yougame.takayamaaren.yougame.ui.base.Presenter
 
-interface CartPresenter : Presenter<CartView>{
+interface CartPresenter : Presenter<CartView> {
     fun getWishlistItems()
+    fun deleteItem(ids: List<Int>)
 }

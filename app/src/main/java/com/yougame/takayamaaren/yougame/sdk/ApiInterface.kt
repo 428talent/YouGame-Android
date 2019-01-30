@@ -35,6 +35,12 @@ interface ApiInterface {
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<CartItem>>
 
+    @DELETE("/api/cart/{id}")
+    fun deleteCartItem(
+            @Header("Authorization") token: String,
+            @Path("id") id: Int
+    ): Deferred<Common>
+
     @GET("/api/goods")
     fun getGoodList(
             @Query("id") ids: List<Int>?,

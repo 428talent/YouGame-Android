@@ -1,5 +1,6 @@
 package com.yougame.takayamaaren.yougame.ui.shoppingcart
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import com.yougame.takayamaaren.yougame.R
@@ -81,12 +82,7 @@ class ShoppingCartActivity : AppCompatActivity(), CartView {
             }
         }
         actionCallback.onDelete = { mode ->
-            selectedList.forEach { selectedItem ->
-                adapter.data.find { it.itemId == selectedItem.itemId }?.let {
-                    adapter.remove(adapter.data.indexOf(it))
-                }
-
-            }
+            presenter.deleteItem(selectedList.map { item -> item.itemId })
             mode.finish()
         }
     }
@@ -95,5 +91,24 @@ class ShoppingCartActivity : AppCompatActivity(), CartView {
         adapter.setNewData(items)
     }
 
+    override fun removeCartItems(ids: List<Int>) {
+        ids.forEach { cartItemId ->
+            val pos = adapter.data.indexOfFirst { item -> item.itemId == cartItemId }
+            if (pos != -1) {
+                adapter.remove(pos)
+            }
+            selectedList.removeAll { item ->
+                item.itemId == cartItemId
+            }
+
+        }
+
+    }
+
+    companion object {
+        fun launch(activity: Activity) {
+            activity.startActivity<ShoppingCartActivity>()
+        }
+    }
 
 }
