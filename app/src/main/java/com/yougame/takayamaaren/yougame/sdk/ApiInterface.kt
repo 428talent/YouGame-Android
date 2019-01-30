@@ -30,8 +30,8 @@ interface ApiInterface {
 
     @GET("/api/carts")
     fun getCartList(
-
             @Header("Authorization") token: String,
+            @Query("good") goodIds: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<CartItem>>
 
@@ -78,4 +78,11 @@ interface ApiInterface {
             @Header("Authorization") token: String,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<WishListItem>>
+
+    @GET("api/inventors")
+    fun getInventoryItemList(
+            @Header("Authorization") token: String,
+            @Query("good") goodIds: List<Int>?,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<InventoryItem>>
 }

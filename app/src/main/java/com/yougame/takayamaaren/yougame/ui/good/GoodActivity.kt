@@ -14,6 +14,7 @@ import com.yougame.takayamaaren.yougame.sdk.model.response.Game
 import com.yougame.takayamaaren.yougame.sdk.model.response.Good
 import com.yougame.takayamaaren.yougame.ui.good.comments.CommentsActivity
 import com.yougame.takayamaaren.yougame.ui.good.components.comment.CommentItem
+import com.yougame.takayamaaren.yougame.ui.good.components.good.GoodItem
 import com.yougame.takayamaaren.yougame.ui.shoppingcart.ShoppingCartActivity
 import kotlinx.android.synthetic.main.activity_good.*
 import kotlinx.coroutines.Dispatchers
@@ -92,7 +93,7 @@ class GoodActivity : AppCompatActivity(), GameView {
         card_comments.updateComments(comment)
     }
 
-    override fun onGoodsLoad(good: List<Good>) {
+    override fun onGoodsLoad(good: List<GoodItem>) {
         panel_goods.updateGoods(good)
     }
 

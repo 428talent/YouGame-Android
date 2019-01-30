@@ -20,9 +20,9 @@ class SelectGoodPanel(context: Context, attributeSet: AttributeSet) : LinearLayo
         }
     }
 
-    fun updateGoods(goods: List<Good>) {
-        this.goods = goods.toMutableList()
-        adapter.setNewData(goods.map { good -> GoodItem(good) })
+    fun updateGoods(goods: List<GoodItem>) {
+        this.goods = goods.map { item -> item.good }.toMutableList()
+        adapter.setNewData(goods)
     }
 
     fun setTitleVisitable(visitable: Boolean) {
@@ -39,6 +39,7 @@ class SelectGoodPanel(context: Context, attributeSet: AttributeSet) : LinearLayo
         btn_add_cart.onClick {
             onAddToCart?.invoke(selectedGoodIds)
         }
+        rv_goods.setHasFixedSize(true)
 
     }
 

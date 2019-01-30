@@ -2,6 +2,7 @@ package com.yougame.takayamaaren.yougame.ui.shoppingcart
 
 import com.yougame.takayamaaren.yougame.sdk.ApiError
 import com.yougame.takayamaaren.yougame.sdk.model.response.GameBand
+import com.yougame.takayamaaren.yougame.services.cart.CartQueryBuilder
 import com.yougame.takayamaaren.yougame.services.cart.CartServices
 import com.yougame.takayamaaren.yougame.services.game.GameQueryBuilder
 import com.yougame.takayamaaren.yougame.services.game.GameServices
@@ -19,14 +20,14 @@ class CartPresenterImpl : CartPresenter {
 
     override fun getWishlistItems() {
         GlobalScope.launch(Dispatchers.IO) {
-            val cartItemList = CartServices.getCartList(page = 1, pageSize = 10)
+            val cartItemList = CartQueryBuilder().inPage(1, 10).query()
             val goodIds = cartItemList.result.map { item -> item.goodId }.distinct()
             val goodListResponse = GoodQueryBuilder().inId(goodIds).inPage(1, goodIds.size).query()
             val gameIds = goodListResponse.result.map { good -> good.gameId }.distinct()
             val gameListResponse = GameQueryBuilder().inId(gameIds).inPage(1, gameIds.size).query()
             val gameBands = mutableMapOf<Int, GameBand>()
             gameListResponse.result.forEach { game ->
-                gameBands[game.id] = GameServices.fetchGameBand(game.id,imageType = "desktop")
+                gameBands[game.id] = GameServices.fetchGameBand(game.id, imageType = "desktop")
             }
             launch(Dispatchers.Main) {
                 view.onLoadCartItemComplete(cartItemList.result.map { item ->

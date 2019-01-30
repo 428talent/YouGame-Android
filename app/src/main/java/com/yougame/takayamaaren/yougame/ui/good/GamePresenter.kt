@@ -1,13 +1,18 @@
 package com.yougame.takayamaaren.yougame.ui.good
 
+import com.yougame.takayamaaren.yougame.sdk.model.response.Good
+import com.yougame.takayamaaren.yougame.sdk.model.response.InventoryItem
+import com.yougame.takayamaaren.yougame.services.cart.CartQueryBuilder
 import com.yougame.takayamaaren.yougame.services.comment.CommentQueryBuilder
 import com.yougame.takayamaaren.yougame.services.game.GameServices
 import com.yougame.takayamaaren.yougame.services.good.GoodQueryBuilder
 import com.yougame.takayamaaren.yougame.services.good.GoodServices
+import com.yougame.takayamaaren.yougame.services.inventory.InventoryItemQueryBuilder
 import com.yougame.takayamaaren.yougame.services.user.ProfileQueryBuilder
 import com.yougame.takayamaaren.yougame.ui.base.Presenter
 import com.yougame.takayamaaren.yougame.ui.clients.ApiClient
 import com.yougame.takayamaaren.yougame.ui.good.components.comment.CommentItem
+import com.yougame.takayamaaren.yougame.ui.good.components.good.GoodItem
 import com.yougame.takayamaaren.yougame.utils.AppConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -44,8 +49,14 @@ class GamePresenterImpl : GamePresenter {
     override fun loadGoods(gameId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val goods = GoodQueryBuilder().inGame(gameId).query()
+            // check good
+            val goodIds = goods.result.map { good: Good -> good.id }.distinct()
+            val cartItems = CartQueryBuilder().inGoodId(goodIds).inPage(1, goods.result.count()).query()
+            val inventoryItem = InventoryItemQueryBuilder().inGoodId(goodIds).query()
             launch(Dispatchers.Main) {
-                view.onGoodsLoad(goods.result)
+                view.onGoodsLoad(goods.result.map { good: Good ->
+                    GoodItem(good, cartItems.result.any { item -> item.goodId == good.id }, inventoryItem.result.any { item -> item.goodId == good.id })
+                })
             }
         }
     }
