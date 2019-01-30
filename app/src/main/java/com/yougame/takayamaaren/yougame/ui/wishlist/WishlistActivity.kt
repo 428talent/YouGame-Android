@@ -3,24 +3,15 @@ package com.yougame.takayamaaren.yougame.ui.wishlist
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yougame.takayamaaren.yougame.R
+import com.yougame.takayamaaren.yougame.ui.good.GoodActivity
 import kotlinx.android.synthetic.main.activity_wishlist.*
 import kotlinx.android.synthetic.main.content_wishlist.*
 
-class WishlistActivity : AppCompatActivity() {
+class WishlistActivity : AppCompatActivity(), WishListView {
+    private val presenter : WishListPresenter = WishListPresenterImpl()
     private val actionCallback = GoodActionMode()
     private val selectedList = mutableListOf<WishlistItem>()
-    private val itemList = mutableListOf(
-            WishlistItem(1),
-            WishlistItem(2),
-            WishlistItem(3),
-            WishlistItem(4),
-            WishlistItem(5),
-            WishlistItem(6),
-            WishlistItem(7),
-            WishlistItem(8),
-            WishlistItem(9),
-            WishlistItem(10)
-    )
+    private val itemList = mutableListOf<WishlistItem>()
     private val adapter by lazy {
         WishlistAdapter(itemList).apply {
             bindToRecyclerView(wishlist_rv)
@@ -30,6 +21,7 @@ class WishlistActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wishlist)
+        presenter.onAttach(this)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
@@ -73,7 +65,7 @@ class WishlistActivity : AppCompatActivity() {
                 it.setIsSelected?.invoke(false)
             }
         }
-        actionCallback.onDelete = {mode ->
+        actionCallback.onDelete = { mode ->
             selectedList.forEach { selectedItem ->
                 adapter.datas.find { it.itemId == selectedItem.itemId }?.let {
                     adapter.remove(adapter.datas.indexOf(it))
@@ -82,7 +74,16 @@ class WishlistActivity : AppCompatActivity() {
             }
             mode.finish()
         }
+        adapter.setOnItemClickListener { adapter, view, position ->
+            val item = adapter.data[position] as WishlistItem
+            GoodActivity.launch(this, item.gameId)
+        }
+        presenter.loadWishListItems()
 
+    }
+
+    override fun onWishListLoad(items: List<WishListView.WishListItemModel>) {
+        adapter.setNewData(items.map { item -> WishlistItem(item.item.id, item.game.name, item.game.price.toDouble(), item.cover, item.game.id) })
     }
 
 }

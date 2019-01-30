@@ -2,6 +2,7 @@ package com.yougame.takayamaaren.yougame.ui.wishlist
 
 import android.graphics.Color
 import android.view.View
+import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.yougame.takayamaaren.yougame.R
@@ -53,6 +54,11 @@ class WishlistAdapter(val datas: MutableList<WishlistItem>) : BaseQuickAdapter<W
             refreshCardState()
         }
 
+        with(helper.itemView) {
+            tv_name.text = item.name
+            tv_price.text = "￥${item.price.toString()}"
+            Glide.with(this).load(item.cover).into(iv_cover)
+        }
         refreshCardState()
 
 
@@ -60,7 +66,7 @@ class WishlistAdapter(val datas: MutableList<WishlistItem>) : BaseQuickAdapter<W
 
 }
 
-class WishlistItem(val itemId: Int) {
+class WishlistItem(val itemId: Int, val name: String, val price: Double, val cover: String,val gameId : Int) {
     var isActiveSelectMode = false
     var isSelected = false
     var onStartSelectMode: (() -> Unit)? = null

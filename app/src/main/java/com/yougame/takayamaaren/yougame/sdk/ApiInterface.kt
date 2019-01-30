@@ -71,4 +71,11 @@ interface ApiInterface {
             @Query("game") gameIds: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Comment>>
+
+
+    @GET("api/wishlist")
+    fun getWishListItems(
+            @Header("Authorization") token: String,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<WishListItem>>
 }
