@@ -12,4 +12,5 @@ interface GameView : View {
     fun onGoodsLoad(good: List<GoodItem>)
     fun onCommentLoad(comment: List<CommentItem>)
     fun onAddCartComplete(goodIds: List<Int>)
+    fun setCommentSummary(summaryText: String, averageRatingText: String)
 }

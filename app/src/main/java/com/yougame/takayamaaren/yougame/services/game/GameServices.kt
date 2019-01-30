@@ -1,5 +1,6 @@
 package com.yougame.takayamaaren.yougame.services.game
 
+import com.yougame.takayamaaren.yougame.sdk.model.response.CommentSummary
 import com.yougame.takayamaaren.yougame.sdk.model.response.Game
 import com.yougame.takayamaaren.yougame.sdk.model.response.GameBand
 import com.yougame.takayamaaren.yougame.ui.clients.ApiClient
@@ -11,5 +12,9 @@ object GameServices {
 
     suspend fun getGame(gameId: Int): Game {
         return ApiClient.client.getGame(gameId).await()
+    }
+
+    suspend fun getGameCommentSummary(gameId: Int): CommentSummary {
+        return ApiClient.client.getGameCommentSummary(gameId).await()
     }
 }

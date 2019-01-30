@@ -17,3 +17,13 @@ data class Comment(
         @SerializedName("user_id")
         val userId: Int
 )
+
+data class CommentSummary(
+    @SerializedName("rating_count")
+    val ratingCount: List<RatingCount>
+) {
+    data class RatingCount(
+        val count: Int,
+        val rating: Int
+    )
+}

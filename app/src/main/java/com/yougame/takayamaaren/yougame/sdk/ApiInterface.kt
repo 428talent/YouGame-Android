@@ -79,6 +79,10 @@ interface ApiInterface {
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Comment>>
 
+    @GET("api/game/{id}/comments/summary")
+    fun getGameCommentSummary(
+            @Path("id") gameId: Int
+    ): Deferred<CommentSummary>
 
     @GET("api/wishlist")
     fun getWishListItems(

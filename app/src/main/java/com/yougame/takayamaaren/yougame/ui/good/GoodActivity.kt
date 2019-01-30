@@ -87,6 +87,8 @@ class GoodActivity : AppCompatActivity(), GameView {
                     ""
             }
         })
+        tv_publisher.text = "发行商：${game.publisher}"
+        tv_release_time.text = "发行日期：${game.releaseTime}"
     }
 
     override fun onCommentLoad(comment: List<CommentItem>) {
@@ -100,6 +102,10 @@ class GoodActivity : AppCompatActivity(), GameView {
         }
     }
 
+    override fun setCommentSummary(summaryText: String, averageRatingText: String) {
+        card_comments.setAverageRating(averageRatingText)
+        card_comments.setSummaryText(summaryText)
+    }
     override fun onAddCartComplete(goodIds: List<Int>) {
         panel_goods.goods.forEach { item -> if (goodIds.any { it == item.good.id }) item.inCart }
         sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED

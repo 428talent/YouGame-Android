@@ -16,6 +16,7 @@ import com.yougame.takayamaaren.yougame.ui.clients.ApiClient
 import com.yougame.takayamaaren.yougame.ui.good.components.comment.CommentItem
 import com.yougame.takayamaaren.yougame.ui.good.components.good.GoodItem
 import com.yougame.takayamaaren.yougame.utils.AppConfig
+import com.yougame.takayamaaren.yougame.utils.Rating
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -65,6 +66,7 @@ class GamePresenterImpl : GamePresenter {
     }
 
     override fun loadComments(gameId: Int) {
+        loadGameSummary(gameId)
         GlobalScope.launch(Dispatchers.IO) {
             val comments = CommentQueryBuilder().inGame(gameId).query()
             val profile = ProfileQueryBuilder().inUser(comments.result.map { comment -> comment.userId }.distinct()).query()
@@ -82,6 +84,21 @@ class GamePresenterImpl : GamePresenter {
                     )
                 })
             }
+        }
+    }
+
+    private fun loadGameSummary(gameId: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val commentSummary = GameServices.getGameCommentSummary(gameId)
+            val total = commentSummary.ratingCount.map { it.rating * it.count }.sum()
+            if (total == 0) {
+                view.setCommentSummary("无数据", "无数据")
+            }
+            val avg = total.toDouble() / commentSummary.ratingCount.map { it.count }.sum()
+            launch(Dispatchers.Main) {
+                view.setCommentSummary(Rating.GetRatingText(avg), String.format("%.1f",avg))
+            }
+
         }
     }
 

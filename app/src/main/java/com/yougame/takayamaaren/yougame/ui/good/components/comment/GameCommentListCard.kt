@@ -14,6 +14,14 @@ class GameCommentListCard(context: Context, attributeSet: AttributeSet) : Linear
         }
     }
 
+    fun setSummaryText(text: String) {
+        tv_text_summary.text = text
+    }
+
+    fun setAverageRating(ratingText: String) {
+        tv_rating_average.text = ratingText
+    }
+
     init {
         View.inflate(context, R.layout.card_good_comments, this)
     }
