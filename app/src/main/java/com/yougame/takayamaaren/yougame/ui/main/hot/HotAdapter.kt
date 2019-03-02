@@ -104,7 +104,7 @@ class HotAdapter(val items: List<HotMultiItem>, val activity: Activity) : BaseMu
                                 GameSetItem(it.name, it.publisher, it.id)
                             }.toMutableList()).apply {
                                 setOnItemClickListener { adapter, view, position ->
-                                    activity.startActivity<GoodActivity>("Game" to data[position])
+                                    activity.startActivity<GoodActivity>("GameId" to data[position].gameId)
                                 }
                             }
                             helper.itemView.game_set_rv.adapter = adapter

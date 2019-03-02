@@ -41,7 +41,7 @@ class GamePresenterImpl : GamePresenter {
     override fun loadGame(gameId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val game = GameServices.getGame(gameId)
-            val gameBand = GameServices.fetchGameBand(gameId, "android")
+            val gameBand = GameServices.fetchGameBand(gameId)
             launch(Dispatchers.Main) {
                 view.onGameLoad(game)
                 view.onGameCoverLoad("${AppConfig.ApiServerUrl}${gameBand.path}")
