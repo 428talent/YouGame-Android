@@ -10,6 +10,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.yougame.takayamaaren.yougame.Game
 import com.yougame.takayamaaren.yougame.R
+import com.yougame.takayamaaren.yougame.services.game.GameQueryBuilder
 import com.yougame.takayamaaren.yougame.ui.category.CategoryActivity
 import com.yougame.takayamaaren.yougame.ui.good.GoodActivity
 import com.yougame.takayamaaren.yougame.ui.main.hot.components.gameset.GameSetAdapter
@@ -23,6 +24,9 @@ import kotlinx.android.synthetic.main.card_game_set_large.view.*
 import kotlinx.android.synthetic.main.card_game_type_list.view.*
 import kotlinx.android.synthetic.main.card_weekly_hot.view.*
 import kotlinx.android.synthetic.main.item_hot_sale.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 
 
@@ -92,27 +96,33 @@ class HotAdapter(val items: List<HotMultiItem>, val activity: Activity) : BaseMu
 
             }
             HotMultiItem.VIEW_TYPE_GAME_SET -> {
-                with(item.data as GameSetData, {
-                    val data = this.games
-                    helper.itemView.game_set_title.text = item.data.title
+                (item.data as GameSetData).let { collection ->
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val gameList = GameQueryBuilder().withCollection(collection.id).query()
+                        launch(Dispatchers.Main) {
+                            val adapter = GameSetAdapter(gameList.result.map {
+                                GameSetItem(it.name, it.publisher, it.id)
+                            }.toMutableList()).apply {
+                                setOnItemClickListener { adapter, view, position ->
+                                    activity.startActivity<GoodActivity>("Game" to data[position])
+                                }
+                            }
+                            helper.itemView.game_set_rv.adapter = adapter
+                        }
+                    }
+                    //                    val data = this.games
+                    helper.itemView.game_set_title.text = collection.title
                     val layoutManager = LinearLayoutManager(helper.itemView.context)
                     layoutManager.orientation = LinearLayout.HORIZONTAL
 
                     helper.itemView.game_set_rv.layoutManager = layoutManager
                     val snapHelper = LinearSnapHelper()
-                    takeIf { isFirst }?.let {
+                    takeIf { collection.isFirst }?.let {
                         snapHelper.attachToRecyclerView(helper.itemView.game_set_rv)
-                        isFirst = false
+                        collection.isFirst
                     }
-                    val adapter = GameSetAdapter(games.map {
-                        GameSetItem(it.name, it.meta, it.cover)
-                    }.toMutableList()).apply {
-                        setOnItemClickListener { adapter, view, position ->
-                            activity.startActivity<GoodActivity>("Game" to data[position])
-                        }
-                    }
-                    helper.itemView.game_set_rv.adapter = adapter
-                })
+
+                }
             }
         }
     }
@@ -126,7 +136,7 @@ data class RecommendGameData(
         val price: Float
 ) : BaseHotItemData()
 
-class GameSetData(var games: List<Game>, val title: String) : BaseHotItemData() {
+class GameSetData(var games: List<Game>, val title: String, val id: Int) : BaseHotItemData() {
     var isFirst: Boolean = true
 }
 

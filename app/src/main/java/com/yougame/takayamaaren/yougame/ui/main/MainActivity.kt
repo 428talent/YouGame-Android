@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        main_tab.setViewPager(main_pager, arrayOf("热门", "排行", "动态"), this, arrayListOf(hotFragment, rankingFragment, feedFragment))
+        main_tab.setViewPager(main_pager, arrayOf("热门"), this, arrayListOf(hotFragment))
         with(nav_view.getHeaderView(0).header) {
 
             UserManager.profile?.let {

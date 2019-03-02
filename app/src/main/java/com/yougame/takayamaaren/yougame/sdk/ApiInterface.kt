@@ -58,6 +58,7 @@ interface ApiInterface {
     @GET("/api/games")
     fun getGameList(
             @Query("id") ids: List<Int>?,
+            @Query("collection") collection: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<Game>>
 
@@ -96,4 +97,10 @@ interface ApiInterface {
             @Query("good") goodIds: List<Int>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<InventoryItem>>
+
+    @GET("api/collections")
+    fun getGameCollection(
+            @Query("name") ids: List<String>?,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<GameCollection>>
 }

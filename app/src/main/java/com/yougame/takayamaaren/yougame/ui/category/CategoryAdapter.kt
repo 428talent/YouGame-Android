@@ -17,7 +17,7 @@ import org.jetbrains.anko.startActivity
 
 class CategoryAdapter(val datas: MutableList<CategoryItem>,val activity: Activity) : BaseQuickAdapter<CategoryItem, CategoryViewHolder>(R.layout.card_game_set_large, datas) {
     override fun convert(helper: CategoryViewHolder, item: CategoryItem) {
-        with(item, {
+        with(item) {
             helper.itemView.game_set_title.text = item.title
             val layoutManager = LinearLayoutManager(helper.itemView.context)
             layoutManager.orientation = LinearLayout.HORIZONTAL
@@ -29,14 +29,14 @@ class CategoryAdapter(val datas: MutableList<CategoryItem>,val activity: Activit
                 isFirst = false
             }
             val adapter = GameSetAdapter(games.map {
-                GameSetItem(it.name, it.meta, it.cover)
+                GameSetItem(it.name, it.meta, 1)
             }.toMutableList()).apply {
                 setOnItemClickListener { adapter, view, position ->
                     activity.startActivity<GoodActivity>("Game" to data[position])
                 }
             }
             helper.itemView.game_set_rv.adapter = adapter
-        })
+        }
     }
 }
 
