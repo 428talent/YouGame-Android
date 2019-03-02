@@ -38,9 +38,7 @@ class GoodActivity : AppCompatActivity(), GameView {
         }
         title = ""
 
-        fab_good_comments.onClick {
-            startActivity<CommentsActivity>()
-        }
+
 
 
 
@@ -60,11 +58,12 @@ class GoodActivity : AppCompatActivity(), GameView {
             ShoppingCartActivity.launch(this@GoodActivity)
         }
 
-        intent.getIntExtra("GameId", 0).let {
-            if (it > 0) {
-                presenter.loadGame(it)
-                presenter.loadGoods(it)
-                presenter.loadComments(it)
+        intent.getIntExtra("GameId", 0).let { gameId ->
+            if (gameId > 0) {
+                presenter.loadGame(gameId)
+                presenter.loadGoods(gameId)
+                presenter.loadComments(gameId)
+
             }
         }
 
@@ -89,6 +88,9 @@ class GoodActivity : AppCompatActivity(), GameView {
         })
         tv_publisher.text = "发行商：${game.publisher}"
         tv_release_time.text = "发行日期：${game.releaseTime}"
+        fab_good_comments.onClick {
+            CommentsActivity.launch(this@GoodActivity, game.id)
+        }
     }
 
     override fun onCommentLoad(comment: List<CommentItem>) {
@@ -106,6 +108,7 @@ class GoodActivity : AppCompatActivity(), GameView {
         card_comments.setAverageRating(averageRatingText)
         card_comments.setSummaryText(summaryText)
     }
+
     override fun onAddCartComplete(goodIds: List<Int>) {
         panel_goods.goods.forEach { item -> if (goodIds.any { it == item.good.id }) item.inCart }
         sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED

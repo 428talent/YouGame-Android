@@ -7,24 +7,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.good.comments.CommentsActivity"
     tools:showIn="@layout/activity_comments">
-    <ScrollView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:background="#eee"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-            <include layout="@layout/card_comments"/>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+    </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

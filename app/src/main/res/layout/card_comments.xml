@@ -44,6 +44,7 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="12dp"
             android:textStyle="bold"
+            android:id="@+id/rating"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
@@ -53,7 +54,7 @@
         android:layout_marginEnd="16dp"
         android:textColor="#2a2a2a"
         android:ellipsize="end"
-
+        android:id="@+id/content"
         android:text="A True Master Piece, I difinetly did love Dark Souls III. Even though the graphics are way more advanced for some computers, the story is alright, and I like that the game has such a variety of weapons, items, and armour, it really feels like you're given a choice on what you wear, and do, like your player has a sense of personality. I thought it wasn't that good to add in Optional Bosses in the game. I don't know why, but I feel like people would want to 100% the game, but I understand if others may not. Again, I really loved this game, and I'd love to play Dark Souls Remastered soon, It's gonna be great. :D"
         android:layout_height="wrap_content" />
     <TextView
@@ -62,6 +63,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
+        android:id="@+id/create_time"
         android:textColor="#2a2a2a"
         android:layout_height="wrap_content" />
 </LinearLayout>
