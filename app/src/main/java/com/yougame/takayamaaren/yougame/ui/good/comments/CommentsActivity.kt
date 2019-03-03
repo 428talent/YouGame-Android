@@ -15,7 +15,9 @@ class CommentsActivity : AppCompatActivity(), CommentsView {
     private val adapter by lazy {
         CommentsAdapter(mutableListOf()).apply {
             bindToRecyclerView(rv)
-
+            setOnLoadMoreListener({
+                presenter.loadMore()
+            }, rv)
         }
     }
     private val presenter: CommentPresenter = CommentPresenterImpl()
@@ -35,8 +37,19 @@ class CommentsActivity : AppCompatActivity(), CommentsView {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+        adapter.setEnableLoadMore(true)
         rv.adapter = adapter
 
+
+    }
+
+    override fun onLoadDone() {
+        adapter.loadMoreEnd()
+    }
+
+    override fun addComments(list: List<Comment>) {
+        adapter.addData(list.map { item -> CommentItem(item) }.toMutableList())
+        adapter.loadMoreComplete()
     }
 
     override fun setComments(list: List<Comment>) {

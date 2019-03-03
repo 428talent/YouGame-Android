@@ -19,6 +19,7 @@ import com.yougame.takayamaaren.yougame.ui.login.LoginActivity
 import com.yougame.takayamaaren.yougame.ui.main.feed.FeedFragment
 import com.yougame.takayamaaren.yougame.ui.main.hot.HotFragment
 import com.yougame.takayamaaren.yougame.ui.main.ranking.RankingFragment
+import com.yougame.takayamaaren.yougame.ui.order.OrdersActivity
 import com.yougame.takayamaaren.yougame.ui.settings.SettingsActivity
 import com.yougame.takayamaaren.yougame.ui.shoppingcart.ShoppingCartActivity
 import com.yougame.takayamaaren.yougame.ui.wallet.WalletActivity
@@ -132,6 +133,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_settings -> {
                 startActivity<SettingsActivity>()
+            }
+            R.id.nav_orders -> {
+                OrdersActivity.launch(this)
             }
         }
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout

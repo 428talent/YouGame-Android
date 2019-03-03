@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity(), LoginView, Validator.ValidationListen
         loginBtn.onClick {
             validator.validate()
         }
+
     }
 
     override fun showSnackBar(message: String) {

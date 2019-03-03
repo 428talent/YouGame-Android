@@ -5,4 +5,6 @@ import com.yougame.takayamaaren.yougame.ui.base.View
 
 interface CommentsView : View {
     fun setComments(list: List<Comment>)
+    fun addComments(list: List<Comment>)
+    fun onLoadDone()
 }

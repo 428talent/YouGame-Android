@@ -103,4 +103,10 @@ interface ApiInterface {
             @Query("name") ids: List<String>?,
             @QueryMap queryMap: Map<String, String>
     ): Deferred<Container<GameCollection>>
+
+    @GET("api/orders")
+    fun getOrderList(
+            @Header("Authorization") token: String,
+            @QueryMap queryMap: Map<String, String>
+    ): Deferred<Container<Order>>
 }

@@ -12,7 +12,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.main.MainActivity"
+            android:name=".ui.order.OrdersActivity"
+            android:label="@string/title_activity_orders"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,62 +26,62 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.account.AccountActivity"
+            android:name=".ui.account.AccountActivity"
             android:label="@string/title_activity_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.good.GoodActivity"
+            android:name=".ui.good.GoodActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_good"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.friends.FriendsActivity"
+            android:name=".ui.friends.FriendsActivity"
             android:label="@string/title_activity_friends"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.wishlist.WishlistActivity"
+            android:name=".ui.wishlist.WishlistActivity"
             android:label="@string/title_activity_wishlist"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.good.comments.CommentsActivity"
+            android:name=".ui.good.comments.CommentsActivity"
             android:label="@string/title_activity_comments"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.wallet.WalletActivity"
+            android:name=".ui.wallet.WalletActivity"
             android:label="@string/title_activity_wallet"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.payment.PaymentActivity"
+            android:name=".ui.payment.PaymentActivity"
             android:label="@string/title_activity_cart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.gamelist.GoodListActivity"
+            android:name=".ui.gamelist.GoodListActivity"
             android:label="@string/title_activity_good_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.settings.SettingsActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.shoppingcart.ShoppingCartActivity"
+            android:name=".ui.shoppingcart.ShoppingCartActivity"
             android:label="@string/title_activity_shopping_cart"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.chat.ChatActivity"
+            android:name=".ui.chat.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.register.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.yougame.takayamaaren.yougame.ui.category.CategoryActivity"
+            android:name=".ui.category.CategoryActivity"
             android:label="@string/title_activity_category"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
